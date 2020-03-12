@@ -90,6 +90,7 @@ namespace Calculator_01
                                 formula_01 = result.ToString();
                                 formula_02 = "";
                                 Display_Left.Text = result.ToString();
+                                Display_Right.Text = "";
                                 SubDisplay_01.Text = "＋";
                             }
                             else
@@ -122,12 +123,10 @@ namespace Calculator_01
                         {
                             if (Display_Right.Text != "")
                             {
-                                formula_02 = Display_Right.Text;
-                                result = float.Parse(formula_01) + float.Parse(formula_02);
-                                formula_01 = result.ToString();
-                                formula_02 = "";
-                                Display_Left.Text = result.ToString();
+                                Display_Left.Text = Display_Right.Text;
+                                Display_Right.Text = "";
                                 SubDisplay_01.Text = "＋";
+
                             }
                             else
                             {
@@ -152,6 +151,7 @@ namespace Calculator_01
                                 formula_01 = result.ToString();
                                 formula_02 = "";
                                 Display_Left.Text = result.ToString();
+                                Display_Right.Text = "";
                                 SubDisplay_01.Text = "－";
                             }
                             else
@@ -184,12 +184,11 @@ namespace Calculator_01
                         {
                             if (Display_Right.Text != "")
                             {
-                                formula_02 = Display_Right.Text;
-                                result = float.Parse(formula_01) - float.Parse(formula_02);
-                                formula_01 = result.ToString();
-                                formula_02 = "";
-                                Display_Left.Text = result.ToString();
+                                Display_Left.Text = Display_Right.Text;
+                                Display_Right.Text = "";
                                 SubDisplay_01.Text = "－";
+
+                                
                             }
                             else
                             {
@@ -212,6 +211,7 @@ namespace Calculator_01
                                 formula_01 = result.ToString();
                                 formula_02 = "";
                                 Display_Left.Text = result.ToString();
+                                Display_Right.Text = "";
                                 SubDisplay_01.Text = "×";
                             }
                             else
@@ -244,12 +244,10 @@ namespace Calculator_01
                         {
                             if (Display_Right.Text != "")
                             {
-                                formula_02 = Display_Right.Text;
-                                result = float.Parse(formula_01) * float.Parse(formula_02);
-                                formula_01 = result.ToString();
-                                formula_02 = "";
-                                Display_Left.Text = result.ToString();
+                                Display_Left.Text = Display_Right.Text;
+                                Display_Right.Text = "";
                                 SubDisplay_01.Text = "×";
+
                             }
                             else
                             {
@@ -272,6 +270,7 @@ namespace Calculator_01
                                 formula_01 = result.ToString();
                                 formula_02 = "";
                                 Display_Left.Text = result.ToString();
+                                Display_Right.Text = "";
                                 SubDisplay_01.Text = "÷";
                             }
                             else
@@ -304,12 +303,10 @@ namespace Calculator_01
                         {
                             if (Display_Right.Text != "")
                             {
-                                formula_02 = Display_Right.Text;
-                                result = float.Parse(formula_01) / float.Parse(formula_02);
-                                formula_01 = result.ToString();
-                                formula_02 = "";
-                                Display_Left.Text = result.ToString();
+                                Display_Left.Text = Display_Right.Text;
+                                Display_Right.Text = "";
                                 SubDisplay_01.Text = "÷";
+
                             }
                             else
                             {
@@ -373,7 +370,15 @@ namespace Calculator_01
 
         private void Delete(object sender, RoutedEventArgs e)
         {
-            Display_Left.Text = Display_Left.Text.Remove(Display_Left.Text.Length, 1);
+            try
+            {
+                Display_Right.Text = Display_Right.Text.Remove(Display_Right.Text.Length - 1, 1);
+            }
+            catch (ArgumentOutOfRangeException)
+            {
+
+            }
+            
         }
 
         private void Equal(object sender, RoutedEventArgs e)
